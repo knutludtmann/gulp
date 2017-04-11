@@ -1,0 +1,20 @@
+{
+  "paths" : {
+    "source" : {
+      "root": "./src",
+      "html": "./src/**/*.html",
+      "js" : "./src/js",
+      "images" : "./src/images",
+      "fonts" : "./src/fonts",
+      "css" : "./src/css/**/*.scss"
+    },
+    "public" : {
+      "root" : "./public",
+      "html" : "./public",
+      "js" : "./public/js",
+      "images" : "./public/images",
+      "fonts" : "./public/fonts",
+      "css" : "./public/css"
+    }
+  }
+}
