@@ -49,7 +49,6 @@ function watch() {
 }
 
 
-
 // Delete as clean task
 gulp.task('clean', function() {
     return del([
