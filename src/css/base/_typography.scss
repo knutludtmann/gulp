@@ -7,16 +7,16 @@ button,
 input,
 select,
 textarea {
-    color: #404040;
+    color: #ccc;
     font-family: 'Helvetica', Arial, sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.5;
+    font-weight: lighter;
 }
 
 p {
     margin-bottom: 1.5em;
 }
-
 
 b,
 strong {
@@ -57,13 +57,11 @@ var {
     font: 15px Monaco, Consolas, "Andyle Mono", "DejaVu Sans Mono", monospace;
 }
 
-
 abbr,
 acronym {
     border-bottom: 1px dotted #666;
     cursor: help;
 }
-
 
 mark,
 ins {
@@ -95,7 +93,3 @@ small {
 big {
     font-size: 125%;
 }
-
-
-
-

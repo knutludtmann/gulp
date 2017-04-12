@@ -29,7 +29,6 @@ gulp.task('sass', function(done) {
 
     .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest(paths().public.css))
-        .pipe(browserSync.reload({ stream: true }));
     done();
 });
 
@@ -45,7 +44,7 @@ gulp.task('html', function() {
 
 
 function watch() {
-    gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', 'html', reload));
+    gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', reloadCSS));
     gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reload));
 }
 
@@ -70,12 +69,19 @@ gulp.task('connect', gulp.series(function(done) {
 }));
 
 function reload() {
-    browserSync.reload();
+    browserSync.reload({ stream: true });
 }
 
 function reloadCSS() {
     browserSync.reload('*.css');
 }
+
+
+function reloadHTML() {
+    console.log('jetzt');
+    browserSync.reload('*.html');
+}
+
 
 function resolvePath(pathInput) {
     return path.resolve(pathInput).replace(/\\/g, "/");
