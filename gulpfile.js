@@ -8,11 +8,10 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
     del = require('del'),
-    cachebust = require('gulp-cache-bust');
-
-
-
-var config = require('./config.json');
+    cachebust = require('gulp-cache-bust'),
+    gulpkss = require('gulp-kss'),
+    concat = require('gulp-concat')
+    config = require('./config.json');
 
 
 
@@ -20,7 +19,13 @@ var config = require('./config.json');
 gulp.task('sass', function(done) {
     return gulp.src(paths().source.css)
         .pipe(sourcemaps.init())
-        .pipe(sass.sync({ includePaths: ['node_modules/susy/sass'], noCache: true, outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(sass.sync(
+            { 
+                includePaths: ['node_modules/susy/sass'], 
+                noCache: true, 
+                outputStyle: 'compressed' 
+            })
+            .on('error', sass.logError))
 
     .pipe(autoprefixer({
         browsers: ['last 20 versions', /*'ie 8', 'ie 9',*/ 'ie 10'],
@@ -45,7 +50,7 @@ gulp.task('html', function() {
 
 function watch() {
     gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', reloadCSS));
-    gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reload));
+    gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
 }
 
 
