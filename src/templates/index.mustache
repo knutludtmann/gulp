@@ -13,11 +13,10 @@
 
 <body>
     <a class="skip-link screen-reader-text" href="#content">Zum Inhalt springen</a>
-    <header class="pagehead">
-        <div class="centered">
-            <h1 class="site-title">Flexbox</h1>
-        </div>
-    </header>
+    {{#header}}
+        {{> components/c-header }}
+    {{/header}}
+
 
     <main class="main-area" id="content">
         <div class="centered">

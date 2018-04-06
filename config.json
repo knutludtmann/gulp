@@ -3,8 +3,10 @@
     "source" : {
       "root": "./src",
       "html": "./src/**/*.html",
+      "mustache": "./src/templates/",
+      "data": "./src/templates/data.json",
       "js" : "./src/js",
-      "images" : "./src/images",
+      "images" : "./src/images/**/*",
       "fonts" : "./src/fonts",
       "css" : "./src/css/**/*.scss"
     },
