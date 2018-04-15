@@ -8,45 +8,47 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     del = require('del'),
     cachebust = require('gulp-cache-bust'),
-    gulpkss = require('gulp-kss'),
-    concat = require('gulp-concat'),
     config = require('./config.json'),
     imagemin = require('gulp-imagemin'),
-    mustache = require("gulp-mustache"),
-    handlebars = require('gulp-compile-handlebars');
+    nunjucksRender = require('gulp-nunjucks-render');
 
 
-// Mustache
-gulp.task('mustache', () => {
-        return gulp.src(paths().source.mustache + '*.mustache')
-            .pipe(mustache(paths().source.data, {extension: '.html'}))
-            .pipe(gulp.dest('./public'))
-    }
-);
+// Converting njk files to html
+gulp.task('nunjucks', function () {
+    return gulp.src('app/pages/**/*.+(html|njk|nunjucks)')
+    // We do not need the data.json for this demo but you can use it if you wanna
+    //.pipe(data(function(){
+    //  return require('./app/data.json');
+    //}))
+        .pipe(nunjucksRender({
+            path: ['src/templates/']
+        }))
+        .pipe(gulp.dest('app'))
+        .pipe(reload({stream: true}));
+});
 
 
 // Sass
 gulp.task('sass', (done) =>
-        gulp.src(paths().source.css)
-            .pipe(sourcemaps.init())
-            .pipe(sass.sync(
-                {
-                    includePaths: ['node_modules/susy/sass'],
-                    noCache: true,
-                    outputStyle: 'compressed'
-                })
-                .on('error', sass.logError))
+    gulp.src(paths().source.css)
+        .pipe(sourcemaps.init())
+        .pipe(sass.sync(
+            {
+                includePaths: ['node_modules/susy/sass'],
+                noCache: true,
+                outputStyle: 'compressed'
+            })
+            .on('error', sass.logError))
 
-            .pipe(autoprefixer({
-                browsers: ['last 20 versions', /*'ie 8', 'ie 9',*/ 'ie 10'],
-                cascade: false
-            }))
+        .pipe(autoprefixer({
+            browsers: ['last 20 versions', /*'ie 8', 'ie 9',*/ 'ie 10'],
+            cascade: false
+        }))
 
-            .pipe(sourcemaps.write('./maps'))
-            .pipe(gulp.dest(paths().public.css))
-
-    //done();
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest(paths().public.css))
 );
+
 
 // Image Minifying
 gulp.task('image', () =>
@@ -78,8 +80,8 @@ gulp.task('html', () =>
 function watch() {
     gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', reloadCSS));
     gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
-    gulp.watch(path.resolve(paths().source.mustache + '**/*.mustache')).on('change', gulp.series('mustache', reloadHTML));
-    gulp.watch(path.resolve(paths().source.data)).on('change', gulp.series('mustache', reloadHTML));
+    //  gulp.watch(path.resolve(paths().source.mustache + '**/*.mustache')).on('change', gulp.series('mustache', reloadHTML));
+    //  gulp.watch(path.resolve(paths().source.data)).on('change', gulp.series('mustache', reloadHTML));
 }
 
 
@@ -89,6 +91,7 @@ gulp.task('clean', () =>
         'public/'
     ])
 );
+
 
 gulp.task('connect', gulp.series(function (done) {
     browserSync.init({
@@ -111,7 +114,6 @@ function reloadCSS() {
 
 
 function reloadHTML() {
-    console.log('jetzt');
     browserSync.reload('*.html');
 }
 
@@ -125,5 +127,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'sass', 'mustache'));
+gulp.task('default', gulp.series('clean', 'sass', 'nunjucks'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));
