@@ -25,6 +25,24 @@ components
 @import "components/nav-base";
 @import "components/nav-single-level";
 
+/*---------------------------------------------
+videos
+----------------------------------------------*/
+.video-container {
+
+    video {
+        display: block;
+        width: 100%;
+        clip-path: url(#clip-00);
+    }
+}
+svg {
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+
 
 
 /*! HTML5 Boilerplate v6.0.1 | MIT License | https://html5boilerplate.com/ */

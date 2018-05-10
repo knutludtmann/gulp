@@ -12,8 +12,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     config = require('./config.json'),
     imagemin = require('gulp-imagemin'),
-    mustache = require("gulp-mustache"),
-    handlebars = require('gulp-compile-handlebars');
+    mustache = require("gulp-mustache");
 
 
 // Mustache
@@ -63,6 +62,12 @@ gulp.task('image', () =>
             })
         ]))
         .pipe(gulp.dest(paths().public.images))
+);
+
+// Copy Video
+gulp.task('video', () =>
+    gulp.src(paths().source.videos)
+        .pipe(gulp.dest(paths().public.videos))
 );
 
 
@@ -125,5 +130,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'sass', 'mustache'));
+gulp.task('default', gulp.series('clean', 'sass', 'video', 'image', 'mustache'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));

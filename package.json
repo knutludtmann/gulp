@@ -13,6 +13,7 @@
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
     "eyeglass": "^1.2.1",
+    "generator-patternlab-starterkit": "^1.5.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cache-bust": "^1.1.0",
@@ -25,6 +26,7 @@
     "gulp-sourcemap": "^1.0.1",
     "minimist": "^1.2.0",
     "path": "^0.12.7",
+    "patternlab-starterkit-mustache": "0.0.7",
     "susy": "^2.2.12"
   }
 }

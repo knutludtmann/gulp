@@ -7,6 +7,7 @@
       "data": "./src/templates/data.json",
       "js" : "./src/js",
       "images" : "./src/images/**/*",
+      "videos" : "./src/videos/**/*",
       "fonts" : "./src/fonts",
       "css" : "./src/css/**/*.scss"
     },
@@ -15,6 +16,7 @@
       "html" : "./public",
       "js" : "./public/js",
       "images" : "./public/images",
+      "videos" : "./public/videos",
       "fonts" : "./public/fonts",
       "css" : "./public/css"
     }
