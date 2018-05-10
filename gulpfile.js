@@ -12,25 +12,18 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     config = require('./config.json'),
     imagemin = require('gulp-imagemin'),
-    mustache = require("gulp-mustache"),
-    render = require('gulp-nunjucks-render'),
-    data = require('gulp-data');
+    nunjucksRender = require('gulp-nunjucks-render');
 
 gulp.task('nunjucks', function() {
-    return gulp.src('src/pages/**/*.+(nj)')
-        .pipe(render({
+    // Gets .html and .nunjucks files in pages
+    return gulp.src('src/pages/**/*.+(html|nunjucks)')
+    // Renders template with nunjucks
+        .pipe(nunjucksRender({
             path: ['src/templates']
         }))
+        // output files in app folder
         .pipe(gulp.dest('public'))
 });
-
-// Mustache
-gulp.task('mustache', () => {
-        return gulp.src(paths().source.mustache + '*.mustache')
-            .pipe(mustache(paths().source.data, {extension: '.html'}))
-            .pipe(gulp.dest('./public'))
-    }
-);
 
 
 // Sass
@@ -92,8 +85,7 @@ gulp.task('html', () =>
 function watch() {
     gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', reloadCSS));
     gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
-    gulp.watch(path.resolve(paths().source.mustache + '**/*.mustache')).on('change', gulp.series('mustache', reloadHTML));
-    gulp.watch(path.resolve(paths().source.data)).on('change', gulp.series('mustache', reloadHTML));
+     gulp.watch(path.resolve(paths().source.data)).on('change', gulp.series('nunjucks', reloadHTML));
 }
 
 
@@ -139,5 +131,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'sass', 'video', 'image'));
+gulp.task('default', gulp.series('clean', 'sass', 'video', 'image', 'nunjucks'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));
