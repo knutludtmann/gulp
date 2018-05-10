@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "bootstrap": "^4.1.1",
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
     "eyeglass": "^1.2.1",
@@ -22,11 +23,15 @@
     "gulp-imagemin": "^3.4.0",
     "gulp-kss": "0.0.2",
     "gulp-mustache": "^3.0.1",
+    "gulp-nunjucks-html": "^2.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemap": "^1.0.1",
     "minimist": "^1.2.0",
     "path": "^0.12.7",
     "patternlab-starterkit-mustache": "0.0.7",
     "susy": "^2.2.12"
+  },
+  "dependencies": {
+    "gulp-nunjucks-render": "^2.2.2"
   }
 }

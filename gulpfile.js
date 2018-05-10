@@ -12,8 +12,17 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     config = require('./config.json'),
     imagemin = require('gulp-imagemin'),
-    mustache = require("gulp-mustache");
+    mustache = require("gulp-mustache"),
+    render = require('gulp-nunjucks-render'),
+    data = require('gulp-data');
 
+gulp.task('nunjucks', function() {
+    return gulp.src('src/pages/**/*.+(nj)')
+        .pipe(render({
+            path: ['src/templates']
+        }))
+        .pipe(gulp.dest('public'))
+});
 
 // Mustache
 gulp.task('mustache', () => {
@@ -130,5 +139,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'sass', 'video', 'image', 'mustache'));
+gulp.task('default', gulp.series('clean', 'sass', 'video', 'image'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));
