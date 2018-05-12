@@ -2,14 +2,14 @@
 {% extends "layout.nunjucks" %}
 
 {% block content %}
-<h1>This is the index page</h1>
+<h1>About</h1>
 
 
 
 {% import 'macros/navigation.nunjucks' as nav %}
 
 <!-- Creating the navigation with activePage = 'home' -->
-{{nav.active('contact')}}
+{{nav.active('about')}}
 
 <div class="gallery">
   <!-- Loops through "images" array -->

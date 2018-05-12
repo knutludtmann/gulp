@@ -12,12 +12,15 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     config = require('./config.json'),
     imagemin = require('gulp-imagemin'),
-    nunjucksRender = require('gulp-nunjucks-render');
+    nunjucksRender = require('gulp-nunjucks-render'),
+    data = require('gulp-data');
 
 gulp.task('nunjucks', function() {
     // Gets .html and .nunjucks files in pages
     return gulp.src('src/pages/**/*.+(html|nunjucks)')
-    // Renders template with nunjucks
+        .pipe(data(function() {
+            return require('./src/data/data.json')
+        }))
         .pipe(nunjucksRender({
             path: ['src/templates']
         }))
@@ -85,7 +88,7 @@ gulp.task('html', () =>
 function watch() {
     gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', reloadCSS));
     gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
-     gulp.watch(path.resolve(paths().source.data)).on('change', gulp.series('nunjucks', reloadHTML));
+    gulp.watch(path.resolve(paths().source.templates)).on('change', gulp.series('nunjucks', reloadHTML));
 }
 
 

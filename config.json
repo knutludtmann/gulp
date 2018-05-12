@@ -3,7 +3,7 @@
     "source" : {
       "root": "./src",
       "html": "./src/**/*.html",
-      "mustache": "./src/templates/",
+      "templates": "./src/**/*.nunjucks",
       "data": "./src/templates/data.json",
       "js" : "./src/js",
       "images" : "./src/images/**/*",
