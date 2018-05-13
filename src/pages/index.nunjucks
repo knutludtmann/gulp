@@ -2,7 +2,7 @@
 {% extends "layout.nunjucks" %}
 
 {% block content %}
-<h1>This is the index page</h1>
+<h1 class="range:bg-grey-lighter skip:uppercase lg:text-purple p3 mt-3">This is the index page</h1>
 
 
 
@@ -15,7 +15,7 @@
   <!-- Loops through "images" array -->
   {% for image in images %}
   <div class="gallery__item">
-    <img src="{{image.src}}" alt="{{image.alt}}">
+    <img src="images/{{image.src}}" alt="{{image.alt}}">
   </div>
   {% endfor %}
 </div>

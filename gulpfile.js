@@ -58,8 +58,8 @@ gulp.task('css', () => {
             tailwindcss('./tailwind.js'),
             autoprefixer
         ]))
-        .pipe(gulp.dest('./'))
-})
+        .pipe(gulp.dest(paths().public.css))
+});
 
 // Image Minifying
 gulp.task('image', () =>
@@ -143,5 +143,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'sass', 'video', 'image', 'nunjucks'));
+gulp.task('default', gulp.series('clean', 'css', 'video', 'image', 'nunjucks'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));

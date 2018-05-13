@@ -9,7 +9,7 @@
       "images": "./src/images/**/*",
       "videos": "./src/videos/**/*",
       "fonts": "./src/fonts",
-      "css": "./src/css/**/*.scss",
+      "css": "./src/css/style.css",
       "tailwind": "./tailwind.js"
     },
     "public": {
