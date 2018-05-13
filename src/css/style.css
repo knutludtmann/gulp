@@ -1,2 +1,9 @@
 @tailwind preflight;
 @tailwind utilities;
+
+@variants hover, focus, responsive, group-hover {
+    .greenyellow {
+        background: greenyellow;
+    }
+}
+
