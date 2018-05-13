@@ -1,24 +1,25 @@
 {
-  "paths" : {
-    "source" : {
+  "paths": {
+    "source": {
       "root": "./src",
       "html": "./src/**/*.html",
       "templates": "./src/**/*.nunjucks",
       "data": "./src/templates/data.json",
-      "js" : "./src/js",
-      "images" : "./src/images/**/*",
-      "videos" : "./src/videos/**/*",
-      "fonts" : "./src/fonts",
-      "css" : "./src/css/**/*.scss"
+      "js": "./src/js",
+      "images": "./src/images/**/*",
+      "videos": "./src/videos/**/*",
+      "fonts": "./src/fonts",
+      "css": "./src/css/**/*.scss",
+      "tailwind": "./tailwind.js"
     },
-    "public" : {
-      "root" : "./public",
-      "html" : "./public",
-      "js" : "./public/js",
-      "images" : "./public/images",
-      "videos" : "./public/videos",
-      "fonts" : "./public/fonts",
-      "css" : "./public/css"
+    "public": {
+      "root": "./public",
+      "html": "./public",
+      "js": "./public/js",
+      "images": "./public/images",
+      "videos": "./public/videos",
+      "fonts": "./public/fonts",
+      "css": "./public/css"
     }
   }
 }

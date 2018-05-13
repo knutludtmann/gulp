@@ -3,22 +3,21 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    rename = require('gulp-rename'),
-    argv = require('minimist')(process.argv.slice(2)),
     autoprefixer = require('gulp-autoprefixer'),
     del = require('del'),
     cachebust = require('gulp-cache-bust'),
-    gulpkss = require('gulp-kss'),
-    concat = require('gulp-concat'),
     config = require('./config.json'),
     imagemin = require('gulp-imagemin'),
     nunjucksRender = require('gulp-nunjucks-render'),
-    data = require('gulp-data');
+    data = require('gulp-data'),
+    tailwindcss = require('tailwindcss'),
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('nunjucks', function() {
+gulp.task('nunjucks', function () {
     // Gets .html and .nunjucks files in pages
     return gulp.src('src/pages/**/*.+(html|nunjucks)')
-        .pipe(data(function() {
+        .pipe(data(function () {
             return require('./src/data/data.json')
         }))
         .pipe(nunjucksRender({
@@ -51,6 +50,16 @@ gulp.task('sass', (done) =>
 
     //done();
 );
+
+// CSS
+gulp.task('css', () => {
+    return gulp.src(paths().source.css)
+        .pipe(postcss([
+            tailwindcss('./tailwind.js'),
+            autoprefixer
+        ]))
+        .pipe(gulp.dest('./'))
+})
 
 // Image Minifying
 gulp.task('image', () =>
