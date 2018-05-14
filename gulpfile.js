@@ -13,11 +13,15 @@ var gulp = require('gulp'),
     tailwindcss = require('tailwindcss'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('gulp-autoprefixer'),
-    purgecss = require('gulp-purgecss');
+    purgecss = require('gulp-purgecss'),
+    postcssimport = require('postcss-import'),
+    cacheBuster = require('gulp-cache-bust');
+
+
 
 gulp.task('nunjucks', function () {
     // Gets .html and .nunjucks files in pages
-    return gulp.src('src/pages/**/*.+(html|nunjucks)')
+    return gulp.src('src/pages/**/*.+(html|njk)')
         .pipe(data(function () {
             return require('./src/data/data.json')
         }))
@@ -26,6 +30,12 @@ gulp.task('nunjucks', function () {
         }))
         // output files in app folder
         .pipe(gulp.dest('public'))
+});
+
+gulp.task('cacheBuster', function () {
+    return gulp.src('./public/*.html')
+        .pipe(cacheBuster())
+        .pipe(gulp.dest('./public/'));
 });
 
 
@@ -56,10 +66,12 @@ gulp.task('sass', (done) =>
 gulp.task('css', () => {
     return gulp.src(paths().source.css)
         .pipe(postcss([
+            postcssimport,
             tailwindcss('./tailwind.js'),
             autoprefixer
+
         ]))
-        .pipe(
+        /*.pipe(
             purgecss({
                 content: [paths().public.html + '*.html'],
                 extractors: [
@@ -73,7 +85,7 @@ gulp.task('css', () => {
                     }
                 ]
             })
-        )
+        )*/
         .pipe(gulp.dest(paths().public.css))
 });
 
@@ -100,6 +112,12 @@ gulp.task('video', () =>
         .pipe(gulp.dest(paths().public.videos))
 );
 
+// Copy Fonts
+gulp.task('fonts', () =>
+    gulp.src(paths().source.fonts)
+        .pipe(gulp.dest(paths().public.fonts))
+);
+
 
 gulp.task('html', () =>
     gulp.src(paths().source.html)
@@ -112,8 +130,8 @@ gulp.task('html', () =>
 
 function watch() {
     gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('css', reloadCSS));
-    gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
-    gulp.watch(path.resolve(paths().source.templates)).on('change', gulp.series('nunjucks', reloadHTML));
+    //gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
+    gulp.watch(path.resolve(paths().source.templates)).on('change', gulp.series('nunjucks','cacheBuster', reloadHTML));
 }
 
 
@@ -145,7 +163,6 @@ function reloadCSS() {
 
 
 function reloadHTML() {
-    console.log('jetzt');
     browserSync.reload('*.html');
 }
 
@@ -159,5 +176,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'nunjucks', 'css', 'video', 'image'));
+gulp.task('default', gulp.series('clean', 'nunjucks', 'css', 'video', 'image', 'fonts', 'cacheBuster'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));

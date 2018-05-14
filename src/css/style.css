@@ -1,5 +1,8 @@
+@import url(./fonts.css);
 @tailwind preflight;
 @tailwind utilities;
+
+
 
 @variants hover, focus, responsive, group-hover {
     .greenyellow {
@@ -11,15 +14,13 @@
     @apply .bg-purple .text-white .font-bold .px-4 .py-2 .rounded;
 }
 
-
 .button:hover {
     @apply .bg-purple-dark;
 }
 
-
 .button--pink {
-     @apply .bg-pink;
- }
+    @apply .bg-pink;
+}
 
 .button--pink:hover {
     @apply .bg-pink-dark;

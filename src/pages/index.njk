@@ -1,28 +1,27 @@
-<!-- index.nunjucks -->
-{% extends "layout.nunjucks" %}
+{% extends "layout.njk" %}
 
 {% block content %}
-<h1 class="hover:greenyellow range:bg-grey-lighter skip:uppercase lg:text-purple p3 mt-3">This is the index page</h1>
-<p class="mb-3">
-    <a href="#" class="text-orange">Lorem</a>
-</p>
-<button class="block w-full py-2 px-4 rounded-sm mb-2 text-white bg-purple-light hover:bg-black">Dolor sit amet</button>
+    {% include "partials/head.njk" %}
 
-{% import 'macros/navigation.nunjucks' as nav %}
+    <h1 class="hover:greenyellow range:bg-grey-lighter skip:uppercase lg:text-purple p3 mt-3">This is the index page</h1>
 
-<!-- Creating the navigation with activePage = 'home' -->
-{{nav.active('contact')}}
+    <p class="mb-3">
+        <a href="#" class="text-orange">Lorem</a>
+    </p>
 
-<div class="gallery">
-  <!-- Loops through "images" array -->
-  {% for image in images %}
-  <div class="gallery__item">
-    <img src="images/{{image.src}}" alt="{{image.alt}}">
-  </div>
-  {% endfor %}
-</div>
+    <button class="block w-full py-2 px-4 rounded-sm mb-2 text-white bg-purple-light hover:bg-black">Dolor sit amet</button>
 
-<button class="button">Submit</button>
-<button class="button button--pink">Submit</button>
+
+    <div class="gallery">
+        <!-- Loops through "images" array -->
+        {% for image in images %}
+            <div class="gallery__item">
+                <img src="images/{{ image.src }}" alt="{{ image.alt }}">
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="button">Submit</button>
+    <button class="button button--pink">Submit</button>
 
 {% endblock %}

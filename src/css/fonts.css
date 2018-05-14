@@ -1,0 +1,539 @@
+
+
+/* Fonts */
+body {
+    -webkit-font-smoothing: antialiased
+}
+
+@font-face {
+    font-family : 'Museo Bold';
+    src         : url('./fonts/Museo-700.eot');
+    src         : url('./fonts/Museo-700.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Museo-700.woff2') format('woff2'),
+    url('./fonts/Museo-700.woff') format('woff'),
+    url('./fonts/Museo-700.ttf') format('truetype'),
+    url('./fonts/Museo-700.svg#Museo-700') format('svg');
+    font-weight : bold;
+    font-style  : normal;
+}
+
+@font-face {
+    font-family : 'Museo Medium';
+    src         : url('./fonts/Museo-500.eot');
+    src         : url('./fonts/Museo-500.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Museo-500.woff2') format('woff2'),
+    url('./fonts/Museo-500.woff') format('woff'),
+    url('./fonts/Museo-500.ttf') format('truetype'),
+    url('./fonts/Museo-500.svg#Museo-500') format('svg');
+    font-weight : 500;
+    font-style  : normal;
+}
+
+/* ------------------------------- SERVICEWELT ICONS ----------------------------- */
+@font-face {
+    font-family : 'Gates';
+    src         : url('./fonts/Gates.eot');
+    src         : url('./fonts/Gates.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Gates.woff') format('woff'),
+    url('./fonts/Gates.ttf') format('truetype'),
+    url('./fonts/Gates.svg#Gates') format('svg');
+    font-weight : normal;
+    font-style  : normal;
+}
+
+[class*='icon-']:before {
+    display                 : inline-block;
+    font-family             : 'Gates';
+    font-style              : normal;
+    font-weight             : normal;
+    line-height             : 1;
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+    text-transform          : initial;
+}
+
+.icon-calendar:before {
+    content: "A"
+}
+
+.icon-calendar.icon--primary:before {
+    content: "A";
+    color: #de0202
+}
+
+.icon-email:before {
+    content: "B"
+}
+
+.icon-email.icon--primary:before {
+    content: "B";
+    color: #de0202
+}
+
+.icon-lock-01:before {
+    content: "C"
+}
+
+.icon-lock-01.icon--primary:before {
+    content: "C";
+    color: #de0202
+}
+
+.icon-position:before {
+    content: "D"
+}
+
+.icon-position.icon--primary:before {
+    content: "D";
+    color: #de0202
+}
+
+.icon-shop:before {
+    content: "E"
+}
+
+.icon-shop.icon--primary:before {
+    content: "E";
+    color: #de0202
+}
+
+.icon-preview:before {
+    content: "F"
+}
+
+.icon-preview.icon--primary:before {
+    content: "F";
+    color: #de0202
+}
+
+.icon-login_colored:before {
+    content: "G"
+}
+
+.icon-login_colored.icon--primary:before {
+    content: "G";
+    color: #de0202
+}
+
+.icon-eye:before {
+    content: "H"
+}
+
+.icon-eye.icon--primary:before {
+    content: "H";
+    color: #de0202
+}
+
+.icon-info:before {
+    content: "I"
+}
+
+.icon-info.icon--primary:before {
+    content: "I";
+    color: #de0202
+}
+
+.icon-menu:before {
+    content: "J"
+}
+
+.icon-menu.icon--primary:before {
+    content: "J";
+    color: #de0202
+}
+
+.icon-question:before {
+    content: "K"
+}
+
+.icon-question.icon--primary:before {
+    content: "K";
+    color: #de0202
+}
+
+.icon-gas-fix:before {
+    content: "L"
+}
+
+.icon-gas-fix.icon--primary:before {
+    content: "L";
+    color: #de0202
+}
+
+.icon-meine-energie:before {
+    content: "M"
+}
+
+.icon-meine-energie.icon--primary:before {
+    content: "M";
+    color: #de0202
+}
+
+.icon-meine-vorteile:before {
+    content: "N"
+}
+
+.icon-meine-vorteile.icon--primary:before {
+    content: "N";
+    color: #de0202
+}
+
+.icon-strom-fix:before {
+    content: "O"
+}
+
+.icon-strom-fix.icon--primary:before {
+    content: "O";
+    color: #de0202
+}
+
+.icon-zahlungsarten:before {
+    content: "P"
+}
+
+.icon-zahlungsarten.icon--primary:before {
+    content: "P";
+    color: #de0202
+}
+
+.icon-vertraege-01:before {
+    content: "Q"
+}
+
+.icon-vertraege-01.icon--primary:before {
+    content: "Q";
+    color: #de0202
+}
+
+.icon-verbraeuche-01:before {
+    content: "R"
+}
+
+.icon-verbraeuche-01.icon--primary:before {
+    content: "R";
+    color: #de0202
+}
+
+.icon-start:before {
+    content: "S"
+}
+
+.icon-start.icon--primary:before {
+    content: "S";
+    color: #de0202
+}
+
+.icon-rechnung:before {
+    content: "T"
+}
+
+.icon-rechnung.icon--primary:before {
+    content: "T";
+    color: #de0202
+}
+
+.icon-kalender-2:before {
+    content: "U"
+}
+
+.icon-kalender-2.icon--primary:before {
+    content: "U";
+    color: #de0202
+}
+
+.icon-logout:before {
+    content: "V"
+}
+
+.icon-logout.icon--primary:before {
+    content: "V";
+    color: #de0202
+}
+
+.icon-euro-01:before {
+    content: "W"
+}
+
+.icon-euro-01.icon--primary:before {
+    content: "W";
+    color: #de0202
+}
+
+.icon-angebote-01:before {
+    content: "X"
+}
+
+.icon-angebote-01.icon--primary:before {
+    content: "X";
+    color: #de0202
+}
+
+.icon-abschlaege-01:before {
+    content: "Y"
+}
+
+.icon-abschlaege-01.icon--primary:before {
+    content: "Y";
+    color: #de0202
+}
+
+.icon-wasser:before {
+    content: "Z"
+}
+
+.icon-wasser.icon--primary:before {
+    content: "Z";
+    color: #de0202
+}
+
+.icon-waerme:before {
+    content: "a"
+}
+
+.icon-waerme.icon--primary:before {
+    content: "a";
+    color: #de0202
+}
+
+.icon-meine-rechnungen-1:before {
+    content: "b"
+}
+
+.icon-meine-rechnungen-1.icon--primary:before {
+    content: "b";
+    color: #de0202
+}
+
+.bullit-group__item:before, .icon-check-01:before {
+    content: "l"
+}
+
+.icon--primary.bullit-group__item:before, .icon-check-01.icon--primary:before {
+    content: "l";
+    color: #de0202
+}
+
+.icon-close-01:before {
+    content: "m"
+}
+
+.icon-close-01.icon--primary:before {
+    content: "m";
+    color: #de0202
+}
+
+.icon-hide_pass:before {
+    content: "n"
+}
+
+.icon-hide_pass.icon--primary:before {
+    content: "n";
+    color: #de0202
+}
+
+.icon-hide_pass_2:before {
+    content: "o"
+}
+
+.icon-hide_pass_2.icon--primary:before {
+    content: "o";
+    color: #de0202
+}
+
+.icon-test:before {
+    content: "p"
+}
+
+.icon-test.icon--primary:before {
+    content: "p";
+    color: #de0202
+}
+
+.icon-pdf:before {
+    content: "c"
+}
+
+.icon-pdf.icon--primary:before {
+    content: "c";
+    color: #de0202
+}
+
+.icon-slider:before {
+    content: "d"
+}
+
+.icon-slider.icon--primary:before {
+    content: "d";
+    color: #de0202
+}
+
+.icon-Ansprechpartner:before {
+    content: "e"
+}
+
+.icon-Ansprechpartner.icon--primary:before {
+    content: "e";
+    color: #de0202
+}
+
+.icon-Bankverbindung:before {
+    content: "f"
+}
+
+.icon-Bankverbindung.icon--primary:before {
+    content: "f";
+    color: #de0202
+}
+
+.icon-Meine_Zaehlerstaende:before {
+    content: "j"
+}
+
+.icon-Meine_Zaehlerstaende.icon--primary:before {
+    content: "j";
+    color: #de0202
+}
+
+.icon-Oeffnungszeiten:before {
+    content: "k"
+}
+
+.icon-Oeffnungszeiten.icon--primary:before {
+    content: "k";
+    color: #de0202
+}
+
+.icon-Energiespartipps:before {
+    content: "g"
+}
+
+.icon-Energiespartipps.icon--primary:before {
+    content: "g";
+    color: #de0202
+}
+
+.icon-Meine_Vertraege:before {
+    content: "h"
+}
+
+.icon-Meine_Vertraege.icon--primary:before {
+    content: "h";
+    color: #de0202
+}
+
+.icon-Meine_Abschlaege:before {
+    content: "i"
+}
+
+.icon-Meine_Abschlaege.icon--primary:before {
+    content: "i";
+    color: #de0202
+}
+
+.icon-Partnerlink:before {
+    content: "q"
+}
+
+.icon-Partnerlink.icon--primary:before {
+    content: "q";
+    color: #de0202
+}
+
+.icon-Preisbestandteile:before {
+    content: "r"
+}
+
+.icon-Preisbestandteile.icon--primary:before {
+    content: "r";
+    color: #de0202
+}
+
+.icon-Servicehotline:before {
+    content: "s"
+}
+
+.icon-Servicehotline.icon--primary:before {
+    content: "s";
+    color: #de0202
+}
+
+.icon-Umzug_melden:before {
+    content: "t"
+}
+
+.icon-Umzug_melden.icon--primary:before {
+    content: "t";
+    color: #de0202
+}
+
+.icon-Umzug:before {
+    content: "u"
+}
+
+.icon-Umzug.icon--primary:before {
+    content: "u";
+    color: #de0202
+}
+
+.icon-Familienmitglied_loeschen:before {
+    content: "v"
+}
+
+.icon-Familienmitglied_loeschen.icon--primary:before {
+    content: "v";
+    color: #de0202
+}
+
+.icon-new-message:before {
+    content: "w"
+}
+
+.icon-new-message.icon--primary:before {
+    content: "w";
+    color: #de0202
+}
+
+.icon-outbox:before {
+    content: "x"
+}
+
+.icon-outbox.icon--primary:before {
+    content: "x";
+    color: #de0202
+}
+
+.icon-inbox:before {
+    content: "y"
+}
+
+.icon-inbox.icon--primary:before {
+    content: "y";
+    color: #de0202
+}
+
+.icon-search:before {
+    content: "0"
+}
+
+.icon-search.icon--primary:before {
+    content: "0";
+    color: #de0202
+}
+
+.icon-attachment:before {
+    content: "1"
+}
+
+.icon-attachment.icon--primary:before {
+    content: "1";
+    color: #de0202
+}
+
+.icon-edit-01:before {
+    content: "2"
+}
+
+.icon-edit-01.icon--primary:before {
+    content: "2";
+    color: #de0202
+}

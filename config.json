@@ -3,12 +3,12 @@
     "source": {
       "root": "./src",
       "html": "./src/**/*.html",
-      "templates": "./src/**/*.nunjucks",
+      "templates": "./src/**/*.njk",
       "data": "./src/templates/data.json",
       "js": "./src/js",
       "images": "./src/images/**/*",
       "videos": "./src/videos/**/*",
-      "fonts": "./src/fonts",
+      "fonts": "./src/fonts/**/*",
       "css": "./src/css/style.css",
       "tailwind": "./tailwind.js"
     },
