@@ -14,7 +14,7 @@
     },
     "public": {
       "root": "./public",
-      "html": "./public",
+      "html": "./public/",
       "js": "./public/js",
       "images": "./public/images",
       "videos": "./public/videos",

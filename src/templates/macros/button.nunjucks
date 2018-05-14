@@ -1,0 +1,11 @@
+<button class="bg-purple hover:bg-purple-dark text-white font-bold px-4 py-2 rounded mr-1 mb-2">
+    Button
+</button>
+
+{% macro active(activePage='home') %}
+<nav>
+  <a href="index.html" class="{%if activePage == 'home' %} active {% endif %}">Home</a>
+  <a href="contact.html" class="{%if activePage == 'contact' %} active {% endif %}">Contact</a>
+  <a href="about.html" class="{%if activePage == 'about' %} active {% endif %}">About</a>
+</nav>
+{% endmacro %}

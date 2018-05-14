@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "gulp-nunjucks-render": "^2.2.2",
-    "gulp-postcss": "^7.0.1"
+    "gulp-postcss": "^7.0.1",
+    "gulp-purgecss": "^0.21.0",
+    "purgecss": "^0.21.0"
   }
 }

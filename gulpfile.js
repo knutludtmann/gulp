@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     data = require('gulp-data'),
     tailwindcss = require('tailwindcss'),
     postcss = require('gulp-postcss'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    purgecss = require('gulp-purgecss');
 
 gulp.task('nunjucks', function () {
     // Gets .html and .nunjucks files in pages
@@ -58,6 +59,21 @@ gulp.task('css', () => {
             tailwindcss('./tailwind.js'),
             autoprefixer
         ]))
+        .pipe(
+            purgecss({
+                content: [paths().public.html + '*.html'],
+                extractors: [
+                    {
+                        extractor: class TailwindExtractor {
+                            static extract(content) {
+                                return content.match(/[A-z0-9-:\/]+/g) || [];
+                            }
+                        },
+                        extensions: ['css', 'html']
+                    }
+                ]
+            })
+        )
         .pipe(gulp.dest(paths().public.css))
 });
 
@@ -95,7 +111,7 @@ gulp.task('html', () =>
 
 
 function watch() {
-    gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('sass', reloadCSS));
+    gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('css', reloadCSS));
     gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
     gulp.watch(path.resolve(paths().source.templates)).on('change', gulp.series('nunjucks', reloadHTML));
 }
@@ -143,5 +159,5 @@ function paths() {
 }
 
 
-gulp.task('default', gulp.series('clean', 'css', 'video', 'image', 'nunjucks'));
+gulp.task('default', gulp.series('clean', 'nunjucks', 'css', 'video', 'image'));
 gulp.task('watch', gulp.series('clean', 'default', 'connect', watch));

@@ -22,4 +22,7 @@
   {% endfor %}
 </div>
 
+<button class="button">Submit</button>
+<button class="button button--pink">Submit</button>
+
 {% endblock %}
