@@ -131,7 +131,7 @@ gulp.task('html', () =>
 function watch() {
     gulp.watch(path.resolve(paths().source.css)).on('change', gulp.series('css', reloadCSS));
     //gulp.watch(path.resolve(paths().source.html)).on('change', gulp.series('html', reloadHTML));
-    gulp.watch(path.resolve(paths().source.templates)).on('change', gulp.series('nunjucks','cacheBuster', reloadHTML));
+    gulp.watch(path.resolve(paths().source.templates)).on('change', gulp.series('cacheBuster', 'nunjucks', reloadHTML));
 }
 
 
@@ -163,6 +163,7 @@ function reloadCSS() {
 
 
 function reloadHTML() {
+    console.log("jetzt");
     browserSync.reload('*.html');
 }
 
